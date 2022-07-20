@@ -9,7 +9,7 @@ public class PersonTest {
     Person pessoa;
     @BeforeEach
     public void setup(){
-       pessoa = new Person("Paul", "McCartney", new Date(2000), true, true, true);
+       pessoa = new Person("Paul", "McCartney", new Date(2000,01,01), true, true, true);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class PersonTest {
     }
     @Test
     public void person_is_MEI(){
-        pessoa = new Person("Paul", "McCartney", new Date(1990), false, false, false);
+        pessoa = new Person("Paul", "McCartney", new Date(1990,01,01), false, false, false);
         Assert.assertTrue(true);
     }
     @Test

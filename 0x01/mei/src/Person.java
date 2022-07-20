@@ -1,5 +1,7 @@
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,11 +33,13 @@ public class Person {
     }
 
     public boolean isMEI() {
-        Date anoAtual = new Date(System.currentTimeMillis());
-        SimpleDateFormat formatarData = new SimpleDateFormat("yyyy");
-        System.out.println(formatarData.format(anoAtual));
+        LocalDate anoAtual = LocalDate.now();
+        LocalDate anoDeNascimento = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int ano = anoAtual.getYear();
+        int ano2 = anoDeNascimento.getYear();
+
         if ((getSalary() * 12) < 130000
-                && (anoAtual.getYear() - birthDate.getYear()) > 18
+                && ( ano - ano2) > 18
                 && !anotherCompanyOwner
                 && !pensioner
                 && !publicServer) {
