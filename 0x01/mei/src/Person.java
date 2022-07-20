@@ -9,13 +9,13 @@ import java.util.Date;
 public class Person {
     private String name;
     private String surname;
-    private Date birthDate;
+    private int birthDate;
     private boolean anotherCompanyOwner;
     private boolean pensioner;
     private boolean publicServer;
     private float salary;
 
-    public Person(String name, String surname, Date birthDate, boolean anotherCompanyOwner, boolean pensioner, boolean publicServer) {
+    public Person(String name, String surname, int birthDate, boolean anotherCompanyOwner, boolean pensioner, boolean publicServer) {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
@@ -34,12 +34,10 @@ public class Person {
 
     public boolean isMEI() {
         LocalDate anoAtual = LocalDate.now();
-        LocalDate anoDeNascimento = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int ano = anoAtual.getYear();
-        int ano2 = anoDeNascimento.getYear();
 
         if ((getSalary() * 12) < 130000
-                && ( ano - ano2) > 18
+                && ( ano - birthDate) > 18
                 && !anotherCompanyOwner
                 && !pensioner
                 && !publicServer) {
@@ -63,7 +61,7 @@ public class Person {
         return surname;
     }
 
-    public Date getBirthDate() {
+    public int getBirthDate() {
         return birthDate;
     }
 
